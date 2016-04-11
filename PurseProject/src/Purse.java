@@ -69,6 +69,12 @@ public class Purse {
 	 */
 	public void reverse()
 	{
+		for(int i = coins.size(); i>0; i--){
+			String s = coins.get(i);
+			for(int j = 0; j<coins.size(); j++){
+				coins.set(j, s);
+			}
+		}
 		
 	}
 	
@@ -84,6 +90,7 @@ public class Purse {
 	 */
 	public void transfer(Purse other)
 	{
+		
 		
 	}
 	
