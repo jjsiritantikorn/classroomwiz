@@ -16,7 +16,8 @@ public class Purse {
 	//constructor that initializes the purse with the coins passed in
 	public Purse(ArrayList<String> c)
 	{
-	coins = c;
+	coins = 
+	c ;
 	
 		
 	}
@@ -90,7 +91,12 @@ public class Purse {
 	 */
 	public void transfer(Purse other)
 	{
-		
+		for(int i =0; i < this.coins.size(); i++){
+			if(Arrays.asList(other.coins).contains(this.sameCoins(i)){
+				
+			}
+		}
+	
 		
 	}
 	
@@ -100,7 +106,19 @@ public class Purse {
 	 */
 	public boolean sameContents(Purse other)
 	{
-		return false;
+		int i = 0;
+		while(i < this.coins.size()){
+			if(this.coins.get(i) == other.coins.get(i)){
+				i++;
+			}
+		}
+		if(i == this.coins.size()){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
 	}
 	
 	/*
@@ -112,7 +130,7 @@ public class Purse {
 	 * should be considered equal 
 	 * You will probably need one or more helper method 
 	 */
-	public boolean sameCoins(Purse other)
+	public boolean sameCoins(int i)
 	{
 		return false; 
 	}
