@@ -16,8 +16,7 @@ public class Purse {
 	//constructor that initializes the purse with the coins passed in
 	public Purse(ArrayList<String> c)
 	{
-	coins = 
-	c ;
+	coins = c ;
 	
 		
 	}
@@ -91,10 +90,24 @@ public class Purse {
 	 */
 	public void transfer(Purse other)
 	{
-		for(int i =0; i < this.coins.size(); i++){
-			if(Arrays.asList(other.coins).contains(this.sameCoins(i)){
-				
+		for(int i =0; i < other.coins.size(); i++){
+			{
+				String s = other.coins.get(i);
+			for(int j = 0; j<this.coins.size(); j++){
+				int check = 0;
+					if (this.coins.get(i) == s ){
+						check++;
+					}
+					if(check == 0){
+						this.coins.add(0,s);
+						other.coins.remove(i);
+					}
+					else{
+						other.coins.remove(i);
+					}
+				}
 			}
+			
 		}
 	
 		
@@ -130,8 +143,17 @@ public class Purse {
 	 * should be considered equal 
 	 * You will probably need one or more helper method 
 	 */
-	public boolean sameCoins(int i)
+	public boolean sameCoins(Purse other)
 	{
+		String[] d = {"Dime", "dime"};
+		String[] q = {"Quarter", "quarter"};
+		String[] n = {"Nickel", "nickel"};
+		String[] p = {"Penny", "penny"};
+		
+		//don't know how to do this function I'm think i have to create these arrays
+		//to see whether or not item in purse is match to the type of coin
+		//if the elements starts with the letter of the array then check if item is in array
+		//and see if it does then same coins
 		return false; 
 	}
 	
