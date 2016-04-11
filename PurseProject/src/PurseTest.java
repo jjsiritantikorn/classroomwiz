@@ -46,8 +46,22 @@ public class PurseTest {
 		
 	}
 	
-	
-	
+	@Test
+	public void testReverse() {
+		assertEquals("Make sure your format is exactly as described", "Purse[Quarter,Nickel,Dime,Quarter]", p1.reverse());
+	}
+	@Test
+	public void testTransfer() {
+		assertEquals("This purse should now have the other purse contents in it","Purse[Quarter,Dime,Nickel,Quarter]",p1.transfer(p2));
+	}
+	@Test
+	public void testSameContents(){
+		assertEquals("This purse should have the same contents as the tested purse","False",p1.sameContents(p2));
+	}
+	@Test
+	public void testSameCoins(){
+		assertEquals("This purse should have the same type of coins as the tested purse","False",p1.sameContents(p2));
+	}
 	
 
 }
