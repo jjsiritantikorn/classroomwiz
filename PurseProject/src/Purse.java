@@ -16,7 +16,7 @@ public class Purse {
 	//constructor that initializes the purse with the coins passed in
 	public Purse(ArrayList<String> c)
 	{
-	coins = c ;
+	this.coins = c ;
 	
 		
 	}
@@ -29,7 +29,7 @@ public class Purse {
 	public void addCoin(String coinName)
 	{
 		coins.add(coinName);
-		System.out.println(this.toString());
+		
 	}
 	
 	/*
@@ -69,14 +69,13 @@ public class Purse {
 	 */
 	public void reverse()
 	{
-		for(int i = coins.size(); i>0; i--){
-			String s = coins.get(i);
-			for(int j = 0; j<coins.size(); j++){
-				coins.set(j, s);
+		for(int i = coins.size()-1; i>=0; i--){
+			coins.add(coins.get(i));
+			coins.remove(i);
 			}
 		}
 		
-	}
+	
 	
 	/*
 	 * Transfer the contents of one purse to another 
@@ -90,27 +89,11 @@ public class Purse {
 	 */
 	public void transfer(Purse other)
 	{
-		for(int i =0; i < other.coins.size(); i++){
-			{
-				String s = other.coins.get(i);
-			for(int j = 0; j<this.coins.size(); j++){
-				int check = 0;
-					if (this.coins.get(i) == s ){
-						check++;
+		for(int i = 0; i < other.coins.size(); i++){
+			this.coins.add(0,other.coins.get(i));
+			other.coins.remove(i);
 					}
-					if(check == 0){
-						this.coins.add(0,s);
-						other.coins.remove(i);
-					}
-					else{
-						other.coins.remove(i);
-					}
-				}
-			}
-			
-		}
 	
-		
 	}
 	
 	/*
@@ -145,16 +128,51 @@ public class Purse {
 	 */
 	public boolean sameCoins(Purse other)
 	{
-		String[] d = {"Dime", "dime"};
-		String[] q = {"Quarter", "quarter"};
-		String[] n = {"Nickel", "nickel"};
-		String[] p = {"Penny", "penny"};
+		int q1 = 0;
+		int d1 = 0;
+		int p1 = 0;
+		int n1 = 0;
+		int q2 = 0;
+		int d2 = 0;
+		int p2 = 0;
+		int n2 = 0;
 		
-		//don't know how to do this function I'm think i have to create these arrays
-		//to see whether or not item in purse is match to the type of coin
-		//if the elements starts with the letter of the array then check if item is in array
-		//and see if it does then same coins
-		return false; 
+		for(int i =0; i <this.coins.size();i++){
+			if(this.coins.get(i) == "Quarter"){
+				q1++;
+			}
+			if(this.coins.get(i) == "Nickel"){
+				n1++;
+			}
+			if(this.coins.get(i) == "Dime"){
+				d1++;
+			}
+			if(this.coins.get(i) == "Penny"){
+				p1++;
+			}
+		}
+		for(int i =0; i <other.coins.size();i++){
+			if(this.coins.get(i) == "Quarter"){
+				q2++;
+			}
+			if(this.coins.get(i) == "Nickel"){
+				n2++;
+			}
+			if(this.coins.get(i) == "Dime"){
+				d2++;
+			}
+			if(this.coins.get(i) == "Penny"){
+				p2++;
+			}
+		}
+		if(q1 == q2 && d1 == d2 && n1==n2 && p1==p2){
+			return true;
+		}
+		
+		else{
+			return false;
+		}
+		
 	}
 	
 	
